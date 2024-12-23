@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import "./Editor.css";
 import { emotionList, getFormattedDate } from "../util";
 import Button from "./Button";
@@ -38,12 +38,17 @@ const Editor = ({ initData, onSubmit }) => {
     const handleOnGoBack = () => {
         navigate(-1);
     };
-    const handleChangeEmotion = (emotionId) => {
-        setState({
+    // useCallback으로 함수 handleChangeEmotion을 Editor 컴포넌트의 마운트 시점 이후에는
+    // 다시 생성되지 않도록 메모이제이션함.
+    const handleChangeEmotion = useCallback((emotionId) => {
+        // setState에서 참조하는 state의 값이 마운트 이후 변하지 않기 때문에 State의 최신값을 유지할 수 
+        //없어 정상적으로 상태가 업데이트 되지 않는다. -> 함수형 업데이트 사용
+        setState((state) => ({
             ...state,
             emotionId,
-        });
-    };
+        }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
     
     return (
         <div className="Editor">

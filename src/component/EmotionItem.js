@@ -1,3 +1,4 @@
+import React from "react";
 import "./EmotionItem.css";
 
 const EmotionItem = ({ id, img, name, onClick, isSelected }) => {
@@ -18,4 +19,5 @@ const EmotionItem = ({ id, img, name, onClick, isSelected }) => {
         </div>
     );
 };
-export default EmotionItem;
+// 컴포넌트에서 기본으로 내보내는 값을 React.memo로 메모이제이션한다.
+export default React.memo(EmotionItem);
