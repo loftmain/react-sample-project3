@@ -15,6 +15,7 @@ const useDiary = (id) => {
             navigate("/", { replace: true });
         }
     }, [id, data])
+    
     return diary;
 };
 export default useDiary;
