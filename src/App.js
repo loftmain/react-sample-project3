@@ -63,7 +63,7 @@ function App() {
       data: mockData,
     }, []);
     setIsDataLoaded(true);
-  });
+  }, []);
 
   const onCreate = (date, content, emotionId) => {
     dispatch({
