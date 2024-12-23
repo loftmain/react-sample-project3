@@ -6,7 +6,7 @@ import { getEmotionImgById } from "../util";
 const DiaryItem = ({ id, emotionId, content, date }) => {
     const navigate = useNavigate();
     const goDetail = () => {
-        navigate(`/daily/${id}`);
+        navigate(`/diary/${id}`);
     };
     const onEdit = () => {
         navigate(`/edit/${id}`);
